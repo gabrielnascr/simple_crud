@@ -20,9 +20,8 @@ module.exports = {
                 message: "Livro criado com Sucesso."
             })
         }).catch((err) => {
-            res.status(401).send({
-                message: err
-            })
+            res.status(401).send("Erro ao criar o Livro.")
+            console.log("ERROR: "+ err)
         });
 
         res.json(book)
