@@ -1,6 +1,11 @@
 const Book = require('../models/Book')
 
 module.exports = {
+    async index(req,res) {
+        const books = await Book.findAll()
+
+        return res.json(books)
+    },
     async show(req, res){
         const { bookId } = req.params;
 
@@ -9,7 +14,11 @@ module.exports = {
                 id: bookId
             }
         });
-        res.json(book);
+        if(book == null){
+            return res.json({message: "Livro não existe."})
+        }
+
+        return res.json(book);
     },
     async create(req, res) {
         const book = await Book.create({
@@ -24,7 +33,7 @@ module.exports = {
             console.log("ERROR: "+ err)
         });
 
-        res.json(book)
+        return res.json(book)
     },
     async update(req, res){
         const bookId = req.params.bookId;

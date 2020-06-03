@@ -3,6 +3,7 @@ const router = express.Router();
 
 const BookController = require('./controllers/BookController');
 
+router.get('/', BookController.index)
 router.post('/', BookController.create); 
 router.get('/:bookId', BookController.show); 
 router.put('/:bookId', BookController.update); 

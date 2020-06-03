@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize("test", "postgres", "123", {
+const sequelize = new Sequelize("test", "root", "", {
     host: 'localhost',
-    dialect: 'postgres',
+    dialect: 'mysql',
 
     pool: {
         max: 5,
@@ -10,7 +10,7 @@ const sequelize = new Sequelize("test", "postgres", "123", {
         require: 30000,
         idle: 10000
     },
-    // logging: false
+    logging: false
 });
 
 sequelize.authenticate().then(() => {
